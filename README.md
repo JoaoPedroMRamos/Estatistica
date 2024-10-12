@@ -1,5 +1,7 @@
 #Partes usadas no trabalho (Colocar em modo CODE no canto superior esquerdo da aba READ ME
+
 #Leitura da Planilha e renomendo colunas
+
 import pandas as pd
 import matplotlib.pyplot as plt
 lista = pd.read_csv('database_grupo3.csv')
@@ -12,7 +14,9 @@ lista = lista.rename(columns={lista.columns[4]:'Preparation'})
 lista = lista.rename(columns={lista.columns[5]:'Math'})
 lista = lista.rename(columns={lista.columns[6]:'Reading'})
 lista = lista.rename(columns={lista.columns[7]:'Writing'})
+
 #Separação do database por grupos, gênero, escolaridade dos pais e refeição em diferentes listas
+
 groupA=lista.loc[lista['Race/Ethnicity']=='group A']
 groupB=lista.loc[lista['Race/Ethnicity']=='group B']
 groupC=lista.loc[lista['Race/Ethnicity']=='group C']
@@ -48,7 +52,9 @@ Free=Free.reset_index()
 Standard=Standard.reset_index()
 Completed=Completed.reset_index()
 Non=Non.reset_index()
+
 #Transformando dataframes para listas
+
 groupALM=groupA['Math'].tolist()
 groupBLM=groupB['Math'].tolist()
 groupCLM=groupC['Math'].tolist()
@@ -100,7 +106,9 @@ completedLW=Completed['Writing'].tolist()
 nonLM=Non['Math'].tolist()
 nonLR=Non['Reading'].tolist()
 nonLW=Non['Writing'].tolist()
+
 #Cálculo de média,variância e desvio padrão geral
+
 print('==============NOTAS GERAIS==============')
 geralnotas=[MathL,ReadL,WriteL]
 grupoGeral=['Math','Reading','Writing']
@@ -127,6 +135,7 @@ for i in range (len(geralnotas)):
     print("Subject: {} ==>\nSomatório: [{}]  Média: [{}]  Variância: [{}]  Desvio Padrão: [{}]\n".format(grupoGeral[i],GeralSum[i],round(GeralMedia[i],5),round(GeralVar[i],5),round(GeralDesvio[i],5)))
 
 #Porcentagem de homens e mulheres por grupo de A-E
+
 femA,femB,femC,femD,femE,malA,malB,malC,malD,malE=0,0,0,0,0,0,0,0,0,0
 listagroup = [groupA,groupB,groupC,groupD,groupE]
 listagenderf= [femA,femB,femC,femD,femE]
@@ -147,6 +156,7 @@ for i in range (5):
     print("Group {}: Male= {}%\n         Female= {}%\n".format(grupos[i],round(percmale[i],5),round(percfemale[i],5)))
     
 #Porcentagem de alimentação Standard e Free por grupo de A-E
+
 lunchgroup=[0,0,0,0,0]
 lunchperc=[0,0,0,0,0]
 freelunchgroup=[0,0,0,0,0]
@@ -159,7 +169,9 @@ for i in range (len(listagroup)):
     freelunchperc[i]=len(freelunchgroup[i])/(len(freeLR))*100
 for i in range (len(grupos)):
     print('\nGrupo: {}: {}%             Grupo:{}: {}%'.format(grupos[i],round(lunchperc[i],5),grupos[i],round(freelunchperc[i],5)))
+    
 #Porcentagem de alunos com preparação completa por grupo de A-E
+
 prepgroup=[0,0,0,0,0]
 prepperc=[0,0,0,0,0]
 print('Porcentagem de alunos com preparação completa por grupo')
@@ -168,7 +180,9 @@ for i in range (len(prepgroup)):
     prepperc[i]= len(prepgroup[i])/(len(listagroup[i]))*100
 for i in range (len(prepperc)):
     print('\nGrupo {}: {}%'.format(grupos[i],round(prepperc[i],5)))
+    
 #Quartil MATH
+
 Q1= int(len(MathL)/4)
 Q2= int(len(MathL)/4*2)
 Q3= int(len(MathL)/4*3)
@@ -181,7 +195,9 @@ DIM=(QMath[2]-QMath[0])
 LIM=QMath[0]-1.5*DIM
 LSM=QMath[2]+1.5*DIM
 print('=============MATH=============\nQuartis= {}\nLimite Inferior= {}\nLimite Superior= {}\n'.format(QMath,LIM,LSM))
+
 #Quartil Read
+
 ReadL=lista['Reading'].tolist()
 ReadL.sort()
 QRead=[0,0,0]
@@ -191,7 +207,9 @@ DIR=(QRead[2]-QRead[0])
 LIR=QRead[0]-1.5*DIR
 LSR=QRead[2]+1.5*DIR
 print('=============READ=============\nQuartis= {}\nLimite Inferior= {}\nLimite Superior= {}'.format(QRead,LIR,LSR))
+
 #Quartil Write
+
 WriteL=lista['Writing'].tolist()
 WriteL.sort()
 QWrite=[0,0,0]
