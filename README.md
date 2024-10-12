@@ -1,4 +1,4 @@
-#Partes usadas no trabalho
+#Partes usadas no trabalho (Colocar em modo CODE no canto superior esquerdo da aba READ ME
 #Leitura da Planilha e renomendo colunas
 import pandas as pd
 import matplotlib.pyplot as plt
