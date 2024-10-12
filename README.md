@@ -1,4 +1,4 @@
-#Partes usadas no trabalho (Colocar em modo CODE no canto superior esquerdo da aba READ ME
+#Partes usadas no trabalho (Clicar no nome do arquivo e colocar em modo CODE no canto superior esquerdo da aba READ ME)
 
 #Leitura da Planilha e renomendo colunas
 
